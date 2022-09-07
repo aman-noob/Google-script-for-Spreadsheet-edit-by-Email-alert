@@ -1,0 +1,33 @@
+function onEdit(e) {
+  let sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet(); 
+ 
+  // EVENT VARIABLES 
+  let range = e.range; 
+  let row = e.range.getRow(); 
+  let col = e.range.getColumn(); 
+  let cellValue = sheet.getActiveCell().getValue(); 
+ // RANDOM DATASET COLUMN
+  let F_name = sheet.getRange(row,2).getValue(); 
+  let L_name = sheet.getRange(row,3).getValue();
+  let L_Date = sheet.getRange(row,1).getValue(); 
+  let Linkedin_profile = sheet.getRange(row,4).getValue();
+  let email_id = sheet.getRange(row,5).getValue();
+  let Designation = sheet.getRange(row,7).getValue();
+  let School_name = sheet.getRange(row,6).getValue();
+  let url = "ENTER YOUR SHEET URL HERE"
+ 
+  if ( col == 10 && cellValue == "YES") { 
+    MailApp.sendEmail(
+      'enteryouremailhere@gmail.com', //ENTER YOUR EMAIL HERE
+      'My email subject, //ENTER YOUR EMAIL SUBJECT
+      'Lead Generated on'+ " " + L_Date + "\n"+
+      'Lead name-'+ " " + F_name + " " +  L_name + "\n"+
+      'Linkedin profile-'+ " " + Linkedin_profile + "\n"+
+      'Email id-'+ " " + email_id + "\n"+
+      'Designation-'+ " " + Designation + "\n"+
+      'School Name-'+ " " + School_name + "\n"+
+      'Sheet URL-'+ " " + url
+    ); 
+  }; 
+ 
+}
